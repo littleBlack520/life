@@ -24,7 +24,6 @@
         <div id="music" class="music">
             <audio id="music-audio" class="audio" loop="" autoplay="autoplay" preload="" src="music/m1.mp3"></audio>
             <div class="control">
-                
             </div>
         </div>
         <!-- 第一屏 -->
@@ -44,7 +43,7 @@
             </div>
             <canvas id="c_white" class="canvas"></canvas>
             <div class="main">
-                <div class="age">您已经<span id="age">24</span>岁了</div>
+                <div class="age">您已经<span id="age">0</span>岁了</div>
                 <div class="des">在这个世界上，你已经存在</div>
                 <table>
                     <tr>
@@ -119,7 +118,7 @@
         <div class="menu hide">
             <a id="set_brith" href="javascript:;">设置生日</a>
             <a id="set_lifes" href="javascript:;">设置寿命</a>
-            <a id="share" href="javascript:;">分享生辰</a>
+            <a class="-mob-share-open" id="share" href="javascript:;">分享生辰</a>
         </div>
         <div class="sponsor hide">
             <a href="javascript:;" class="close"></a>
@@ -130,9 +129,46 @@
                 <img src="images/weixin.jpg">
             </div>
         </div>
+        <div class="bbs">
+            <a href="javascript:;" class="close"></a>
+            <div class="main">
+                <div class="row">
+                    <div class="username">我是小黑</div>
+                    <div class="content">我是小黑呀，哈哈哈。</div>
+                </div>
+                <div class="row">
+                    <div class="username">我是小黑</div>
+                    <div class="content">我是小黑呀，哈哈哈。</div>
+                </div>
+            </div>
+            <div class="form">
+                
+            </div>
+        </div>
         <div class="mask">
         </div>
     </div>
+    <!--MOB SHARE BEGIN-->
+    <div class="-mob-share-ui" style="display: none">
+        <ul class="-mob-share-list">
+            <li class="-mob-share-weibo">
+                <p>新浪微博</p>
+            </li>
+            <li class="-mob-share-weixin">
+                <p>微信</p>
+            </li>
+            <li class="-mob-share-qzone">
+                <p>QQ空间</p>
+            </li>
+            <li class="-mob-share-qq">
+                <p>QQ好友</p>
+            </li>
+        </ul>
+        <div class="-mob-share-close">取消</div>
+    </div>
+    <div class="-mob-share-ui-bg"></div>
+    <!--MOB SHARE END-->
 </body>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=89afe98dfef8"></script>
 
 </html>

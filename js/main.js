@@ -133,25 +133,26 @@
               }, 1000);
       };
 
-      $(".more").on("touchstart", function() {
+      $(".more").on("click", function() {
           $menu.toggleClass("hide");
           
-          $("body").one("touchstart",function(){
+          $("body").one("click",function(){
             $menu.addClass("hide");
+            return true;
           });
           return false;
       });
-      $(".sponsor-btn").on("touchstart", function() {
+      $(".sponsor-btn").on("click", function() {
           $mask.show();
           $sponsor.removeClass("hide");
 
       });
-      $(".close").on("touchstart", function() {
+      $(".close").on("click", function() {
           $sponsor.addClass("hide");
           $mask.hide();
 
       });
-      $("#music").on("touchstart", function() {
+      $("#music").on("click", function() {
           if (audio.paused) {
               audio.play();
           } else {
@@ -159,7 +160,7 @@
           }
           $(this).toggleClass("stopped");
       });
-      $("#set_brith,#set_lifes").on("touchstart", function() {
+      $("#set_brith,#set_lifes").on("click", function() {
           $menu.addClass("hide");
           if ($(this).attr("id") == "set_brith") {
               nextPage($(".page.page-current"), $page1);
