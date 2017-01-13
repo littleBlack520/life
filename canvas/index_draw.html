@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /*background: #1C1C1A;*/
+        }
+
+        canvas {
+            display: block;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas">
+</canvas>
+</body>
+<script type="text/javascript">
+  function Clock(canvas, width, height, theme, age, oldage) {
+    this.canvas = canvas;
+    this.ctx = this.canvas.getContext("2d");
+    this.scale = width / 375;
+    this.age = age || 0;
+    this.oldage = oldage || 0;
+    this.theme = theme;
+    this.canvas.width = width * 2;
+    this.canvas.height = height * 2;
+    this.canvas.style.width = width + "px";
+    this.canvas.style.height = height + "px";
+    this.cx = this.canvas.width / 2;
+    this.cy = this.canvas.height / 2;
+
+    var themecolor = {};
+    if (this.theme == "black") {
+        themecolor.arcline = "#363636";
+        themecolor.arcfill = "#2B2B29";
+        themecolor.hoursMinutes = "#F9F9F7";
+    } else {
+        themecolor.arcline = "#29272A";
+        themecolor.arcfill = "#fff";
+        themecolor.hoursMinutes = "#29272A";
+    }
+
+
+    this.arc = {
+        x: this.cx,
+        y: this.cy,
+        line: 15,
+        lineStyle: themecolor.arcline,
+        fillStyle: themecolor.arcfill,
+        shadowBlur: 30,
+        shadowColor: "#000",
+        r: 200
+    };
+
+    this.centerArc = {
+        x: this.cx,
+        y: this.cy,
+        line: 8,
+        r: 10,
+        shadowBlur: 30,
+        shadowColor: "#000",
+        fillStyle: "#EA513B"
+    };
+
+    this.hoursRect = {
+        x: this.cx,
+        y: this.cy,
+        width: 10,
+        height: -90,
+        fillStyle: themecolor.hoursMinutes,
+        angle: 0
+    };
+
+    this.mintuesRect = {
+        x: this.cx,
+        y: this.cy,
+        width: 7,
+        height: -130,
+        fillStyle: themecolor.hoursMinutes,
+        angle: 0
+    };
+
+    this.secondsRect = {
+        x: this.cx,
+        y: this.cy,
+        width: 5,
+        height: -150,
+        fillStyle: "#E35134",
+        angle: 0
+    };
+
+ this.draw();
+
+
+}
+
+Clock.prototype.drawArc = function(obj) {
+    this.ctx.save();
+    this.ctx.beginPath();
+    this.ctx.arc(obj.x, obj.y, obj.r * this.scale, 0, 2 * Math.PI);
+    this.ctx.closePath();
+    this.ctx.lineWidth = obj.line * this.scale;
+    this.ctx.strokeStyle = obj.lineStyle || "#000";
+    this.ctx.fillStyle = obj.fillStyle || "#000";
+    this.ctx.shadowColor = obj.shadowColor;
+    this.ctx.shadowBlur = obj.shadowBlur * this.scale;
+    obj.fillStyle && this.ctx.fill();
+    obj.lineStyle && this.ctx.stroke();
+    this.ctx.restore();
+};
+Clock.prototype.drawRect = function(hoursRect) {
+    this.ctx.save();
+    this.ctx.fillStyle = hoursRect.fillStyle;
+    this.ctx.translate(this.cx, this.cy);
+    this.ctx.rotate(hoursRect.angle / 180 * Math.PI);
+    this.ctx.fillRect(-hoursRect.width / 2, 0, hoursRect.width * this.scale, hoursRect.height * this.scale);
+    this.ctx.restore();
+};
+Clock.prototype.draw = function() {
+    var time, hours, minutes, second;
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    if (this.theme == "black") {
+        time = (24 * (this.age / this.oldage)).toString().split(".");
+        this.hoursRect.angle = parseInt(time[0]) / 12 * 360;
+        this.mintuesRect.angle = Number("0."+time[1]) * 360;
+        this.secondsRect.angle = 0;
+
+    } else {
+        time = new Date();
+        hours = time.getHours();
+        minutes = time.getMinutes();
+        second = time.getSeconds();
+        this.hoursRect.angle = hours / 12 * 360;
+        this.mintuesRect.angle = minutes / 60 * 360;
+        this.secondsRect.angle = second / 60 * 360;
+    }
+    this.drawArc(this.arc);
+    this.drawRect(this.hoursRect);
+    this.drawRect(this.mintuesRect);
+    this.drawRect(this.secondsRect);
+    this.drawArc(this.centerArc);
+};
+
+    Clock(document.documentElement.clientWidth, 600, "black");
+</script>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="生辰" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no, address=no">
+    <title>生辰</title>
+    <script src="js/resize.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/mobiscroll3.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="js/mobiscroll3.js" type="text/javascript"></script>
+    <script src="js/page.js" type="text/javascript"></script>
+    <script src="js/clock.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="wrap" id="wrap">
+        <div id="music" class="music">
+            <audio id="music-audio" class="audio" loop="" autoplay="autoplay" preload="" src="music/m1.mp3"></audio>
+            <div class="control">
+                
+            </div>
+        </div>
+        <!-- 第一屏 -->
+        <section class="page page1 page-current">
+            <img class="timepic" src="images/white.png" alt="">
+            <div class="des">你出生于</div>
+            <div class="btn-box">
+                <a href="javascript:;" id="btn-day" class="btn">选择日期</a>
+            </div>
+        </section>
+        <!-- 第二屏 -->
+        <section class="page page2">
+            <div class="top clearfix">
+                <a class="more" href="javascript:;">更多</a>
+                <a href="javascript:;">心愿墙</a>
+                <a class="sponsor-btn" href="javascript:;">赞助</a>
+            </div>
+            <canvas id="c_white" class="canvas"></canvas>
+            <div class="main">
+                <div class="age">您已经<span id="age">24</span>岁了</div>
+                <div class="des">在这个世界上，你已经存在</div>
+                <table>
+                    <tr>
+                        <td>
+                            <p class="year">0</p>年
+                        </td>
+                        <td>
+                            <p class="mouth">0</p>月
+                        </td>
+                        <td>
+                            <p class="week">0</p>周
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="day">0</p>天
+                        </td>
+                        <td>
+                            <p class="hours">0</p>小时
+                        </td>
+                        <td>
+                            <p class="minutes">0</p>分钟
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="btn-box"> <a href="javascript:;" class="btn" id="btn-die">死之钟</a></div>
+        </section>
+        <!-- 第三屏 -->
+        <section class="page page3">
+            <img class="timepic" src="images/black.png" alt="">
+            <div class="des">你猜测自己能够活多少岁</div>
+            <div class="btn-box">
+                <a href="javascript:;" id="btn-age" class="btn">选择年龄</a>
+                <a href="javascript:;" id="btn-reject" class="btn">拒绝猜测</a>
+            </div>
+        </section>
+        <!--第四屏  -->
+        <section class="page page4">
+            <div class="top clearfix">
+                <a class="more" href="javascript:;">更多</a>
+                <a href="javascript:;">心愿墙</a>
+                <a class="sponsor-btn" href="javascript:;">赞助</a>
+            </div>
+            <canvas id="c_black" class="canvas"></canvas>
+            <div class="main">
+                <div class="age">这是你一生中的<span id="l-age">5点49分</span></div>
+                <div class="des">剩下的日子里，你大约可以</div>
+                <table>
+                    <tr>
+                        <td>
+                            吃<span class="eat">0</span>顿饭
+                        </td>
+                        <td>
+                            做<span class="love">0</span>次爱
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            度过<span class="l-week">0</span>周末
+                        </td>
+                        <td>
+                            享受<span class="holiday">0</span>个长假
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="btn-box">
+                <a href="javascript:;" class="btn" id="btn-live">生之时</a>
+            </div>
+        </section>
+        <div class="menu hide">
+            <a id="set_brith" href="javascript:;">设置生日</a>
+            <a id="set_lifes" href="javascript:;">设置寿命</a>
+            <a id="share" href="javascript:;">分享生辰</a>
+        </div>
+        <div class="sponsor hide">
+            <a href="javascript:;" class="close"></a>
+            <div class="pay">
+                <h4>感谢你的赞助</h4>
+                <p>扫一扫以下二维码</p>
+                <p>或在微信中长按以下二维码</p>
+                <img src="images/weixin.jpg">
+            </div>
+        </div>
+        <div class="mask">
+        </div>
+    </div>
+</body>
+
+</html>

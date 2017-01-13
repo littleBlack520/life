@@ -1,0 +1,22 @@
+/* ----------------------------------------------------
+   created with http://www.codeandweb.com/texturepacker 
+   ----------------------------------------------------
+   $TexturePacker:SmartUpdate:898b055995c00f38685680e3ebbbe627:be43716f538752e72a0368dcbcb674b2:001a672e5489fde79d94d559b0b506c2$
+   ----------------------------------------------------
+
+   usage: <span class="{-spritename-} sprite"></span>
+
+   replace {-spritename-} with the sprite you like to use
+
+*/
+
+.sprite {display:inline-block; overflow:hidden; background-repeat: no-repeat;background-image:url(clock.png);}
+
+.b-bg {width:1262px; height:1262px; background-position: -1266px -2px}
+.b-hours {width:34px; height:313px; background-position: -2530px -773px}
+.b-mintues {width:34px; height:352px; background-position: -2530px -419px}
+.bg {width:1262px; height:1262px; background-position: -2px -2px}
+.hours {width:34px; height:313px; background-position: -2566px -537px}
+.mintues {width:34px; height:352px; background-position: -2530px -65px}
+.second {width:17px; height:533px; background-position: -2594px -2px}
+.small {width:62px; height:61px; background-position: -2530px -2px}

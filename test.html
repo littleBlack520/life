@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="initial-scale=1.0,maximum-scale=1.0,width=device-width" name="viewport">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>生辰</title>
+       <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <link href="css/mobiscroll3.css" rel="stylesheet" type="text/css" />
+    <script src="js/mobiscroll3.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("#scroller").mobiscroll().date({
+            setText: '确定',
+            cancelText: '取消',
+            theme: 'android-holo-light', //皮肤样式
+            lang: 'zh',
+            dateFormat: 'yyyy-mm-dd', //将只返回年月
+            dateOrder: 'yymmdd'
+        });
+        $("#number").mobiscroll().number({
+            theme: 'android-holo-light',
+            defaultValue: "80",
+            step: 1,
+            setText: '确定',
+            cancelText: '取消',
+            theme: "android-holo-light"
+        });
+        mobiscroll.setDefaults({
+    theme: 'ios',
+    lang: 'zh'
+});
+    });
+    </script>
+</head>
+
+<body>
+    <input id="scroller" />
+    <input id="number" />
+    <div id="myform" mbsc-enhance>
+    <label>
+        Username
+        <input id="username" />
+    </label>
+    <label>
+        Password
+        <textarea></textarea>
+    </label>
+    <button type="submit">Sign In</button>
+</div>
+</body>
+
+</html>
