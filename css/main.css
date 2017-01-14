@@ -42,15 +42,23 @@ canvas { display: block; }
 	to { -webkit-transform: rotate(360deg); transform: rotate(360deg) }
 }
 @keyframes rotate2d {
-	from { transform: rotate(0deg); transform: rotate(0deg) }
-	to { transform: rotate(360deg); transform: rotate(360deg) }
+	from { -webkit-transform: rotate(0deg); transform: rotate(0deg); transform: rotate(0deg) }
+	to { -webkit-transform: rotate(360deg); transform: rotate(360deg); transform: rotate(360deg) }
+}
+@-webkit-keyframes aniArrowDown {
+	0% { -webkit-transform: translateY(-.05rem) }
+	100% { -webkit-transform: translateY(0.1rem) }
+}
+@keyframes aniArrowDown {
+	0% { -webkit-transform: translateY(-.05rem); transform: translateY(-.05rem) }
+	100% { -webkit-transform: translateY(0.1rem); transform: translateY(0.1rem) }
 }
 .page-rotateCubeLeftOut { -webkit-transform-origin: 100% 50%; -webkit-animation: rotateCubeLeftOut .6s both ease-in; -moz-transform-origin: 100% 50%; -moz-animation: rotateCubeLeftOut .6s both ease-in; -ms-transform-origin: 100% 50%; transform-origin: 100% 50%; animation: rotateCubeLeftOut .6s both ease-in; }
 .page-rotateCubeLeftIn { -webkit-transform-origin: 0% 50%; -webkit-animation: rotateCubeLeftIn .6s both ease-in; -moz-transform-origin: 0% 50%; -moz-animation: rotateCubeLeftIn .6s both ease-in; -ms-transform-origin: 0% 50%; transform-origin: 0% 50%; animation: rotateCubeLeftIn .6s both ease-in; }
 
 /***公用样式****/
 html { height: 100%; }
-body { width: 6.4rem; margin: 0 auto; height: 100%; background: #000;     }
+body { width: 6.4rem; margin: 0 auto; height: 100%; background: #000; }
 img { width: 100%; height: auto; }
 .wrap { width: 100%; height: 100%; -webkit-perspective: 1200px; perspective: 1200px; position: relative; }
 .page { width: 100%; height: 100%; position: absolute; top: 0; left: 0; visibility: hidden; -webkit-backface-visibility: hidden; backface-visibility: hidden; -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); -webkit-transform-style: preserve-3d; transform-style: preserve-3d; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: justify; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between; }
@@ -60,7 +68,7 @@ img { width: 100%; height: auto; }
 .page-ontop { z-index: 999; }
 .timepic, .canvas { margin: 0 auto; }
 .timepic { width: 50%; }
-.btn-box { text-align: center; padding:0.2rem 0 0.5rem; }
+.btn-box { text-align: center; padding: 0.2rem 0 0.5rem; }
 .btn { display: inline-block; width: 3rem; font-size: 0.35rem; color: #535353; border-radius: 0.4rem; border: 1px solid #787876; padding: 0.1rem 0; text-align: center; }
 .timepic { padding-top: 0.5rem; }
 .top { padding-top: 0.2rem; }
@@ -71,14 +79,44 @@ img { width: 100%; height: auto; }
 .menu a { display: block; font-size: 0.3rem; color: #535353; padding-top: 0.15rem; }
 .page2 .age, .page4 .age { font-size: 0.4rem; font-weight: bold; text-align: center; }
 .page2 .des, .page4 .des { font-size: 0.3rem; text-indent: 0.6rem; margin: 0.2rem 0 0.1rem; }
-.mask { display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: #000; opacity: 0.5; z-index: 2; }
-/*bbs*/ 
-.bbs{-webkit-transition: top 0.7s; transition: top 0.7s; text-align: center; width: 6rem; height: 7rem; margin-left: -3rem; margin-top: -3.5rem; background: rgba(0,0,0,0.5);   position: absolute; top: 50%; left: 50%; z-index: 3; -webkit-box-sizing: border-box; box-sizing: border-box; padding: 0.2rem; border-radius: 0.1rem;}
-.bbs .close{right:-0.1rem;top:-0.5rem; }
-.bbs .row{ padding:0.2rem;background: #fff;margin-bottom: 0.1rem;border-radius: 0.2rem; }
-.bbs .row .username{ font-size: 0.3rem; font-weight: bold;  text-align: left;border-bottom: 1px solid #ccc; }
-.bbs .row .content{ padding-top: 0.2rem;text-align: left;font-size: 0.2rem; }
+.mask { width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: #000; opacity: 0.5; z-index: 4; }
 
+/*bbs*/
+.bbs { -webkit-transition: top 0.7s; transition: top 0.7s; text-align: center; width: 100%; height: 100%; background: #fff; position: absolute; left: 0; top: 0; z-index: 3; -webkit-box-sizing: border-box; box-sizing: border-box; padding: 0.2rem 0; }
+.bbs h2 { font-size: 0.4rem; position: absolute; left: 0; width: 100%; }
+.bbs .close { right: 0.1rem; top: 0.1rem; z-index: 4; }
+.bbs .main { padding: 0.2rem 0 0.4rem; position: relative; margin-top: 12%; border-bottom: 1px dotted #ccc; border-top: 1px dotted #ccc; margin-bottom: 5%; height: 83%; -webkit-box-sizing: border-box; box-sizing: border-box; }
+.bbs .main-box { height: 100%; overflow: auto; padding:0 0.2rem; }
+.bbs .arrow { width: 0.42rem; height: 0.2rem; background: url(../images/arrow.png) no-repeat; background-size: cover; position: absolute; bottom: 0.1rem; left: 50%; margin-left: -0.2rem; -webkit-animation: aniArrowDown .7s .3s ease-in alternate infinite both; animation: aniArrowDown .7s .3s ease-in alternate infinite both; z-index: 2; }
+.bbs .row { padding: 0.2rem; background: #fff; margin-bottom: 0.1rem; border-radius: 0.2rem; border: 1px solid #ccc; -webkit-box-sizing: border-box; box-sizing: border-box; }
+.bbs .row .username { font-size: 0.3rem; font-weight: bold; text-align: left; border-bottom: 1px solid #ccc; }
+.bbs .row .content { padding-top: 0.2rem; text-align: left; font-size: 0.2rem; }
+.bbs .row .time { text-align: right; font-size: 0.2rem; }
+.bbs .hope-btn { position: absolute; bottom: 0.2rem; left: 50%; -webkit-transform: translate(-50%, 0); -ms-transform: translate(-50%, 0); transform: translate(-50%, 0); }
+/*表单*/ 
+.form{ display: block;padding:0.2rem; box-sizing: border-box; position: absolute;background: #fff; top:50%;left:50%;width:5rem;height:5rem;margin-left: -2.5rem;margin-top: -2.5rem;z-index: 5;  }
+.form h2{ font-size: 0.3rem;  text-align: center;border-bottom: 1px dotted #ccc; padding-bottom: 0.1rem; margin-bottom: 0.2rem; }
+.form label{ font-size: 0.3rem;padding: 0.05rem 0;display: block; }
+.form input{ 
+  display: block;
+  width: 80%;
+  height:0.5rem;
+  line-height: 0.5rem;
+  text-indent: 0.1rem;
+  border-radius: 0.1rem;
+  font-size: 0.25rem;
+}
+.form textarea{
+	display: block;
+	 width: 80%;
+	 height:1.5rem;
+	 text-indent: 0.1rem;
+	 border-radius: 0.1rem;
+	 font-size: 0.25rem;
+
+}
+.form div{ margin-bottom: 0.2rem;}
+.form .btn{ width: 1.5rem; font-size: 0.3rem;padding: 0.05rem 0; }
 
 /*赞助*/
 .sponsor { -webkit-transition: top 0.7s; transition: top 0.7s; text-align: center; width: 5rem; height: 6.2rem; margin-left: -2.5rem; margin-top: -3rem; background: #fff; position: absolute; top: 50%; left: 50%; z-index: 3; -webkit-box-sizing: border-box; box-sizing: border-box; padding: 0.2rem; border-radius: 0.1rem; }
