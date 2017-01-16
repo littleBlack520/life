@@ -4,7 +4,8 @@
 html { -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; color: #000; background: #fff; overflow-y: scroll; }
 * { margin: 0; padding: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); outline: 0; }
 body, input, select, button, textarea { font: 16px/1.5 Helvetica, sans-serif; }
-input, select, textarea { font-size: 100%; }
+input, select, textarea { font-size: 100%; outline: none; border: 1px solid #B1B1B1; }
+textarea { resize: none }
 a { text-decoration: none; }
 a:hover { text-decoration: none; }
 a:active { background-color: transparent; }
@@ -55,6 +56,7 @@ canvas { display: block; }
 }
 .page-rotateCubeLeftOut { -webkit-transform-origin: 100% 50%; -webkit-animation: rotateCubeLeftOut .6s both ease-in; -moz-transform-origin: 100% 50%; -moz-animation: rotateCubeLeftOut .6s both ease-in; -ms-transform-origin: 100% 50%; transform-origin: 100% 50%; animation: rotateCubeLeftOut .6s both ease-in; }
 .page-rotateCubeLeftIn { -webkit-transform-origin: 0% 50%; -webkit-animation: rotateCubeLeftIn .6s both ease-in; -moz-transform-origin: 0% 50%; -moz-animation: rotateCubeLeftIn .6s both ease-in; -ms-transform-origin: 0% 50%; transform-origin: 0% 50%; animation: rotateCubeLeftIn .6s both ease-in; }
+.mask { display: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: #000; opacity: 0.5; z-index: 4; }
 
 /***公用样式****/
 html { height: 100%; }
@@ -79,47 +81,34 @@ img { width: 100%; height: auto; }
 .menu a { display: block; font-size: 0.3rem; color: #535353; padding-top: 0.15rem; }
 .page2 .age, .page4 .age { font-size: 0.4rem; font-weight: bold; text-align: center; }
 .page2 .des, .page4 .des { font-size: 0.3rem; text-indent: 0.6rem; margin: 0.2rem 0 0.1rem; }
-.mask { width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: #000; opacity: 0.5; z-index: 4; }
 
-/*bbs*/
-.bbs { -webkit-transition: top 0.7s; transition: top 0.7s; text-align: center; width: 100%; height: 100%; background: #fff; position: absolute; left: 0; top: 0; z-index: 3; -webkit-box-sizing: border-box; box-sizing: border-box; padding: 0.2rem 0; }
-.bbs h2 { font-size: 0.4rem; position: absolute; left: 0; width: 100%; }
-.bbs .close { right: 0.1rem; top: 0.1rem; z-index: 4; }
-.bbs .main { padding: 0.2rem 0 0.4rem; position: relative; margin-top: 12%; border-bottom: 1px dotted #ccc; border-top: 1px dotted #ccc; margin-bottom: 5%; height: 83%; -webkit-box-sizing: border-box; box-sizing: border-box; }
-.bbs .main-box { height: 100%; overflow: auto; padding:0 0.2rem; }
-.bbs .arrow { width: 0.42rem; height: 0.2rem; background: url(../images/arrow.png) no-repeat; background-size: cover; position: absolute; bottom: 0.1rem; left: 50%; margin-left: -0.2rem; -webkit-animation: aniArrowDown .7s .3s ease-in alternate infinite both; animation: aniArrowDown .7s .3s ease-in alternate infinite both; z-index: 2; }
-.bbs .row { padding: 0.2rem; background: #fff; margin-bottom: 0.1rem; border-radius: 0.2rem; border: 1px solid #ccc; -webkit-box-sizing: border-box; box-sizing: border-box; }
-.bbs .row .username { font-size: 0.3rem; font-weight: bold; text-align: left; border-bottom: 1px solid #ccc; }
-.bbs .row .content { padding-top: 0.2rem; text-align: left; font-size: 0.2rem; }
-.bbs .row .time { text-align: right; font-size: 0.2rem; }
-.bbs .hope-btn { position: absolute; bottom: 0.2rem; left: 50%; -webkit-transform: translate(-50%, 0); -ms-transform: translate(-50%, 0); transform: translate(-50%, 0); }
-/*表单*/ 
-.form{ display: block;padding:0.2rem; box-sizing: border-box; position: absolute;background: #fff; top:50%;left:50%;width:5rem;height:5rem;margin-left: -2.5rem;margin-top: -2.5rem;z-index: 5;  }
-.form h2{ font-size: 0.3rem;  text-align: center;border-bottom: 1px dotted #ccc; padding-bottom: 0.1rem; margin-bottom: 0.2rem; }
-.form label{ font-size: 0.3rem;padding: 0.05rem 0;display: block; }
-.form input{ 
-  display: block;
-  width: 80%;
-  height:0.5rem;
-  line-height: 0.5rem;
-  text-indent: 0.1rem;
-  border-radius: 0.1rem;
-  font-size: 0.25rem;
-}
-.form textarea{
-	display: block;
-	 width: 80%;
-	 height:1.5rem;
-	 text-indent: 0.1rem;
-	 border-radius: 0.1rem;
-	 font-size: 0.25rem;
 
-}
-.form div{ margin-bottom: 0.2rem;}
-.form .btn{ width: 1.5rem; font-size: 0.3rem;padding: 0.05rem 0; }
+/*hope*/
+.hope { -webkit-transition: top 0.7s; transition: top 0.7s; text-align: center; width: 100%; height: 100%; background: #fff; position: absolute; left: 0; top: 0; z-index: 3; -webkit-box-sizing: border-box; box-sizing: border-box; padding: 0.2rem 0; }
+.hope.hide{ top:-150%; }
+.hope h2 { font-size: 0.4rem; position: absolute; left: 0; width: 100%; }
+.hope .close { right: 0.1rem; top: 0.1rem; z-index: 4; }
+.hope .main { padding: 0.2rem 0 0.4rem; position: relative; margin-top: 12%; border-bottom: 1px dotted #ccc; border-top: 1px dotted #ccc; margin-bottom: 5%; height: 80%; -webkit-box-sizing: border-box; box-sizing: border-box; }
+.hope .main-box { height: 100%; overflow: auto; padding: 0 0.2rem; }
+.hope .arrow { width: 0.42rem; height: 0.2rem; background: url(../images/arrow.png) no-repeat; background-size: cover; position: absolute; bottom: 0.1rem; left: 50%; margin-left: -0.2rem; -webkit-animation: aniArrowDown .7s .3s ease-in alternate infinite both; animation: aniArrowDown .7s .3s ease-in alternate infinite both; z-index: 2; }
+.hope .row { padding: 0.2rem; background: #fff; margin-bottom: 0.1rem; border-radius: 0.2rem; border: 1px solid #ccc; -webkit-box-sizing: border-box; box-sizing: border-box; }
+.hope .row .username { font-size: 0.3rem; font-weight: bold; text-align: left; border-bottom: 1px solid #ccc; }
+.hope .row .content { padding-top: 0.2rem; text-align: left; font-size: 0.2rem; }
+.hope .row .time { text-align: right; font-size: 0.2rem; }
+.hope .hope-btn { position: absolute; bottom: 0.2rem; left: 50%; -webkit-transform: translate(-50%, 0); -ms-transform: translate(-50%, 0); transform: translate(-50%, 0); }
+
+/*表单*/
+.form {  -webkit-transition: left 0.7s; transition: left 0.7s; padding: 0.2rem; border-radius: 0.2rem; box-sizing: border-box; position: absolute; background: #fff; top: 50%; left: 50%; width: 5rem; height: 5.8rem; margin-left: -2.5rem; margin-top: -2.9rem; z-index: 5; }
+.form.hide{ left:-150%; }
+.form h2 { font-size: 0.3rem; text-align: center; border-bottom: 1px dotted #ccc; padding-bottom: 0.1rem; margin-bottom: 0.2rem; }
+.form label { font-size: 0.3rem; padding: 0.15rem 0; display: block; }
+.form input { display: block; width: 100%; height: 0.55rem; line-height: 0.5rem; text-indent: 0.1rem; border-radius: 0.1rem; font-size: 0.25rem; }
+.form textarea { display: block; width: 100%; height: 1.5rem; text-indent: 0.1rem; border-radius: 0.1rem; font-size: 0.25rem; }
+.form div { margin-bottom: 0.2rem; }
+.form .btn { width: 1.5rem; font-size: 0.3rem; padding: 0.05rem 0; }
 
 /*赞助*/
-.sponsor { -webkit-transition: top 0.7s; transition: top 0.7s; text-align: center; width: 5rem; height: 6.2rem; margin-left: -2.5rem; margin-top: -3rem; background: #fff; position: absolute; top: 50%; left: 50%; z-index: 3; -webkit-box-sizing: border-box; box-sizing: border-box; padding: 0.2rem; border-radius: 0.1rem; }
+.sponsor { -webkit-transition: top 0.7s; transition: top 0.7s; text-align: center; width: 5rem; height: 6.2rem; margin-left: -2.5rem; margin-top: -3rem; background: #fff; position: absolute; top: 50%; left: 50%; z-index: 5; -webkit-box-sizing: border-box; box-sizing: border-box; padding: 0.2rem; border-radius: 0.1rem; }
 .sponsor.hide { top: -100%; }
 .pay h4 { font-size: 0.4rem; font-weight: bold; }
 .pay p { font-size: 0.2rem; }

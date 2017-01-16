@@ -75,12 +75,86 @@
           new Clock(image, sprite, c_black, c_width, c_height, "black", age, num);
           localStorage.setItem("all_lifes", num);
       }
+      /**
+       * 根据时间戳获取日期
+       * @param  {[type]} 时间戳 [description]
+       * @return {[type]}   日期    [description]
+       */
+      function getTimeStr(timesamp) {
+          var date = new Date(parseInt(timesamp) * 1000),
+              year = date.getFullYear(),
+              month = date.getMonth() + 1,
+              day = date.getDate();
+          return year + "-" + month + "-" + day;
+
+      }
+
+      function getHopeData(page) {
+          $.ajax({
+              url: "http://192.168.1.191/hope.php",
+              data: {
+                  type: "get",
+                  page: page
+              },
+              success: function(json) {
+                  var data = json.data,
+                      html = "";
+                  if (data.length > 0) {
+                      for (var i = 0; i < data.length; i++) {
+                          html += '<div class="row">' +
+                              '<div class="username">' + data[i].username + '</div>' +
+                              '<div class="content">' + data[i].content + '</div>' +
+                              '<div class="time">' + getTimeStr(data[i].time) + '</div>' +
+                              '</div> ';
+                      }
+                      $(".main-box").append(html);
+                  }
+              }
+          });
+      }
+
+      function setHopeData() {
+          var $form = $(".form"),
+              $username = $.trim($("#username").val()),
+              $content = $.trim($("#content").val());
+
+          if ($username == "") {
+              alert("用户名不能为空");
+              return false;
+          } else if ($username.length > 20) {
+
+              alert("用户名长度不能大于20");
+              return false;
+          } else if ($content == "") {
+
+              alert("内容不能为空");
+              return false;
+          } else if ($content.length > 200) {
+              alert("内容不能大于200字");
+              return false;
+          }
+          $.ajax({
+              url: "http://192.168.1.191/hope.php",
+              type: "post",
+              data: $form.serialize() + "&type=set",
+              success: function(json) {
+                  if (json.status == 1) {
+                      $(".main-box").empty();
+                      page = 1;
+                      getHopeData(page);
+                      $form.addClass("hide");
+                      $mask.hide();
+                  }
+              }
+          });
+
+      }
       var c_width = document.getElementById("wrap").clientWidth * 0.8, //canvas宽度
           c_height = c_width * 0.6, //canvas高度
           c_white = document.getElementById("c_white"), //白色canvas
           c_black = document.getElementById("c_black"), ////黑色canvas
           image = new Image(), //图像容器
-          sprite = {  //sprite图
+          sprite = { //sprite图
               white: {
                   bg: [-2, -2, 1262, 1262],
                   hours: [2566, 537, 34, 313],
@@ -108,6 +182,7 @@
           age, //年龄
           Birth, //生日日期
           second = 0, //当前的秒数
+          page = 1, //心愿页码
           has_age = false; //是否选择了年龄
 
       if (localStorage.getItem("birth")) {
@@ -132,13 +207,13 @@
                   }
               }, 1000);
       };
-
+      getHopeData(page);
       $(".more").on("click", function() {
           $menu.toggleClass("hide");
-          
-          $("body").one("click",function(){
-            $menu.addClass("hide");
-            return true;
+
+          $("body").one("click", function() {
+              $menu.addClass("hide");
+              return true;
           });
           return false;
       });
@@ -167,6 +242,24 @@
           } else {
               nextPage($(".page.page-current"), $page3);
           }
+
+      });
+      $(".hope-btn").on("click", function() {
+          $(".hope").removeClass("hide");
+      });
+      $(".hope .close").on("click", function() {
+          $(".hope").addClass("hide");
+      });
+      $(".write-btn").on("click", function() {
+          $mask.show();
+          $(".form").removeClass("hide");
+      });
+      $(".form-cancel").on("click", function() {
+          $(".form").addClass("hide");
+          $mask.hide();
+      });
+      $(".form-sure").on("click", function() {
+          setHopeData();
 
       });
       //生日选择

@@ -38,7 +38,7 @@
         <section class="page page2">
             <div class="top clearfix">
                 <a class="more" href="javascript:;">更多</a>
-                <a href="javascript:;">心愿墙</a>
+                <a class="hope-btn" href="javascript:;">心愿墙</a>
                 <a class="sponsor-btn" href="javascript:;">赞助</a>
             </div>
             <canvas id="c_white" class="canvas"></canvas>
@@ -85,7 +85,7 @@
         <section class="page page4">
             <div class="top clearfix">
                 <a class="more" href="javascript:;">更多</a>
-                <a href="javascript:;">心愿墙</a>
+                <a class="hope-btn" href="javascript:;">心愿墙</a>
                 <a class="sponsor-btn" href="javascript:;">赞助</a>
             </div>
             <canvas id="c_black" class="canvas"></canvas>
@@ -115,11 +115,25 @@
                 <a href="javascript:;" class="btn" id="btn-live">生之时</a>
             </div>
         </section>
+        <!-- 心愿墙 -->
+        <section class="hope hide">
+            <a href="javascript:;" class="close"></a>
+            <h2>心愿墙</h2>
+            <div class="main">
+                <div class="main-box">
+
+                </div>
+                <div class="arrow"></div>
+            </div>
+            <a href="javascript:;" class="write-btn btn">写下你的心愿</a>
+        </section>
+        <!-- 顶部菜单 -->
         <div class="menu hide">
             <a id="set_brith" href="javascript:;">设置生日</a>
             <a id="set_lifes" href="javascript:;">设置寿命</a>
             <a class="-mob-share-open" id="share" href="javascript:;">分享生辰</a>
         </div>
+        <!-- 赞助 -->
         <div class="sponsor hide">
             <a href="javascript:;" class="close"></a>
             <div class="pay">
@@ -129,57 +143,22 @@
                 <img src="images/weixin.jpg">
             </div>
         </div>
-        <div class="bbs">
-            <a href="javascript:;" class="close"></a>
-            <h2>心愿墙</h2>
-            <div class="main">
-                <div class="main-box">
-                    <div class="row">
-                        <div class="username">我是小黑</div>
-                        <div class="content">每年我的愿望都是一样，变得更好！不想在日复一日、复制粘贴般的生活中老去，让我来见证我们的改变叭~人人都知道努力可能会成功，但最终失败的人却那么多，出色的拖延力功不可没！</div>
-                        <div class="time">2012-03-04</div>
-                    </div>
-                    <div class="row">
-                        <div class="username">我是小黑</div>
-                        <div class="content">改变是不会突然发生，它会潜移默化地出现在我们一年的每一个小瞬间里，所以制定新年计划的意义就在于此。 </div>
-                        <div class="time">2012-03-04</div>
-                    </div>
-                    <div class="row">
-                        <div class="username">我是小黑</div>
-                        <div class="content">每年我的愿望都是一样，变得更好！不想在日复一日、复制粘贴般的生活中老去，让我来见证我们的改变叭~人人都知道努力可能会成功，但最终失败的人却那么多，出色的拖延力功不可没！</div>
-                        <div class="time">2012-03-04</div>
-                    </div>
-                    <div class="row">
-                        <div class="username">我是小黑</div>
-                        <div class="content">每年我的愿望都是一样，变得更好！不想在日复一日、复制粘贴般的生活中老去，让我来见证我们的改变叭~人人都知道努力可能会成功，但最终失败的人却那么多，出色的拖延力功不可没！</div>
-                        <div class="time">2012-03-04</div>
-                    </div>
-                    <div class="row">
-                        <div class="username">我是小黑</div>
-                        <div class="content">每年我的愿望都是一样，变得更好！不想在日复一日、复制粘贴般的生活中老去，让我来见证我们的改变叭~人人都知道努力可能会成功，但最终失败的人却那么多，出色的拖延力功不可没！</div>
-                        <div class="time">2012-03-04</div>
-                    </div>
-                </div>
-                <div class="arrow"></div>
-            </div>
-            <a href="javascript:;" class="hope-btn btn">写下你的心愿</a>
-        </div>
-        <form class="form">
+        <!-- 表单 -->
+        <form class="form hide">
             <h2>写下你的心愿</h2>
             <label>姓名：</label>
-            <input type="text" name="username" id="username" placeholder="请写下你的姓名" >
+            <input type="text" name="username" id="username" placeholder="请写下你的姓名">
             <label>心愿：</label>
-            <textarea name="content" id="content"  placeholder="请写下你的心愿"></textarea>
-            <div class="btn-box" >
-                            <a href="javascript:;" class="btn">确定</a>
-            <a href="javascript:;"  class="btn">取消</a>
+            <textarea name="content" id="content" placeholder="请写下你的心愿"></textarea>
+            <div class="btn-box">
+                <a href="javascript:;" class="btn form-sure">确定</a>
+                <a href="javascript:;" class="btn form-cancel">取消</a>
             </div>
-
         </form>
         <div class="mask">
         </div>
     </div>
-    <!--MOB SHARE BEGIN-->
+    <!--分享-->
     <div class="-mob-share-ui" style="display: none">
         <ul class="-mob-share-list">
             <li class="-mob-share-weibo">
@@ -198,7 +177,6 @@
         <div class="-mob-share-close">取消</div>
     </div>
     <div class="-mob-share-ui-bg"></div>
-    <!--MOB SHARE END-->
 </body>
 <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=89afe98dfef8"></script>
 
